@@ -1,6 +1,6 @@
 package com.matthieudeglon.shooter2d.Views;
 
-import com.matthieudeglon.shooter2d.API.Menu;
+import com.matthieudeglon.shooter2d.Menu.Menu;
 import com.matthieudeglon.shooter2d.Customs.CustomCheckedException;
 import javafx.util.Pair;
 
@@ -9,11 +9,11 @@ import java.util.regex.Pattern;
 
 public class OptionsMenu extends Menu {
 
-    public OptionsMenu(){
+    public OptionsMenu() {
         super();
     }
 
-    public OptionsMenu(Menu otherMenu){
+    public OptionsMenu(Menu otherMenu) {
         super(otherMenu);
     }
 
@@ -22,8 +22,8 @@ public class OptionsMenu extends Menu {
 
         setTitle("O P T I O N S");
 
-        int defaultIndex = getColorMode().equals("dark") ? 0: 1;
-        this.addSelectorItem("COLOR MODE", defaultIndex,  "dark", "light");
+        int defaultIndex = getColorMode().equals("dark") ? 0 : 1;
+        this.addSelectorItem("COLOR MODE", defaultIndex, "dark", "light");
 
         this.addSelectorItem("RESOLUTION",
                 (int) getStageWidth() + "x" + (int) getStageHeight() + " (current)",
@@ -59,7 +59,6 @@ public class OptionsMenu extends Menu {
     }
 
 
-
     private Pair<Double, Double> ParseSelectedResolution(String stringContainingResolution) throws CustomCheckedException.WrongParsingException {
         String widthString;
         String heightString;
@@ -77,7 +76,7 @@ public class OptionsMenu extends Menu {
             double height = Integer.parseInt(heightString);
 
             return new Pair<>(width, height);
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new CustomCheckedException.WrongParsingException(stringContainingResolution, int.class);
         }
 
@@ -91,7 +90,7 @@ public class OptionsMenu extends Menu {
     private void applyCurrentSettings() throws CustomCheckedException.MissingMenuComponentException {
         try {
             writeSettings();
-        }catch (CustomCheckedException.FileManagementException e){
+        } catch (CustomCheckedException.FileManagementException e) {
             System.err.println(e.toString() + " Writing was wrong. Continuing.");
         }
 
@@ -104,8 +103,8 @@ public class OptionsMenu extends Menu {
 
 
         if (isSimulationRunning() &&
-                ((int)candidateWidth != (int)getMenuWidth() ||
-                        (int)candidate_height != (int)getMenuHeight())) {
+                ((int) candidateWidth != (int) getMenuWidth() ||
+                        (int) candidate_height != (int) getMenuHeight())) {
             launchConfirmChangesPage(candidateWidth, candidate_height, candidate_color_mode);
         } else {
             launchChangedOptionsMenu(candidateWidth, candidate_height, candidate_color_mode);
@@ -119,14 +118,14 @@ public class OptionsMenu extends Menu {
 
         try {
             writeSettings();
-        }catch (CustomCheckedException.FileManagementException e){
+        } catch (CustomCheckedException.FileManagementException e) {
             System.err.println(e.toString() + " Writing was wrong. Continuing.");
         }
 
         OptionsMenu optionsMenu = new OptionsMenu(this);
         try {
             optionsMenu.readProperties();
-        } catch(CustomCheckedException.FileManagementException e){
+        } catch (CustomCheckedException.FileManagementException e) {
             System.err.println(e.toString() + " Using default settings.");
         }
 
@@ -137,7 +136,7 @@ public class OptionsMenu extends Menu {
         String candidateColorMode;
         try {
             candidateColorMode = getSelectorValue("COLOR MODE");
-        }catch (CustomCheckedException.MissingMenuComponentException e){
+        } catch (CustomCheckedException.MissingMenuComponentException e) {
             System.err.println(e.toString() + " Color mode will not be changed. Continuing.");
             candidateColorMode = getColorMode();
         }
@@ -148,7 +147,7 @@ public class OptionsMenu extends Menu {
         var selectedResolution = new Pair<>(getMenuWidth(), getMenuHeight());
         try {
             selectedResolution = ParseSelectedResolution(getSelectorValue("RESOLUTION"));
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.err.println(e.toString() + " Resolution will not be changed. Continuing.");
         }
         return selectedResolution;

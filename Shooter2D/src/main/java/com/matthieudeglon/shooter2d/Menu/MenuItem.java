@@ -1,4 +1,4 @@
-package com.matthieudeglon.shooter2d.API;
+package com.matthieudeglon.shooter2d.Menu;
 
 import javafx.geometry.Pos;
 import javafx.scene.SnapshotParameters;
@@ -21,8 +21,8 @@ public class MenuItem extends StackPane {
     }
 
     public MenuItem(String name, double itemWidthRatio, double itemHeightRatio) {
-        final var effectiveItemWidth = itemWidthRatio<0? 0.19 : itemWidthRatio;
-        final var effectiveItemHeight = itemHeightRatio<0? 0.05 : itemHeightRatio;
+        final var effectiveItemWidth = itemWidthRatio < 0 ? 0.19 : itemWidthRatio;
+        final var effectiveItemHeight = itemHeightRatio < 0 ? 0.05 : itemHeightRatio;
 
         _name = name;
 
@@ -34,17 +34,17 @@ public class MenuItem extends StackPane {
                 new Stop(0.9, Menu.getColorPalette().basic_secondary_color),
                 new Stop(1, Menu.getColorPalette().selected_secondary_color));
 
-        Rectangle box = new Rectangle(effectiveItemWidth* Menu.getMenuWidth(),effectiveItemHeight* Menu.getMenuHeight());
+        Rectangle box = new Rectangle(effectiveItemWidth * Menu.getMenuWidth(), effectiveItemHeight * Menu.getMenuHeight());
         box.setOpacity(0.4);
 
         Text text = new Text(name);
         text.setFill(Menu.getColorPalette().basic_primary_color);
-        text.setFont(Font.font("Times New Roman", FontWeight.SEMI_BOLD,0.0333* Menu.getMenuHeight()));
+        text.setFont(Font.font("Times New Roman", FontWeight.SEMI_BOLD, 0.0333 * Menu.getMenuHeight()));
 
         var params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT);
         var textImage = new ImageView(text.snapshot(params, null));
-        if(textImage.getBoundsInLocal().getWidth() > box.getWidth()) {
+        if (textImage.getBoundsInLocal().getWidth() > box.getWidth()) {
             textImage.setFitWidth(box.getWidth());
         }
 

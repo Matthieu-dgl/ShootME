@@ -1,22 +1,22 @@
 package com.matthieudeglon.shooter2d.Views;
 
 
-import com.matthieudeglon.shooter2d.API.Menu;
+import com.matthieudeglon.shooter2d.Menu.Menu;
 import com.matthieudeglon.shooter2d.Customs.CustomCheckedException;
 import com.matthieudeglon.shooter2d.Models.Simulation;
 
 public class GameMenu extends Menu {
 
 
-    public GameMenu(){
+    public GameMenu() {
         super();
     }
 
-    public GameMenu(Menu otherMenu){
+    public GameMenu(Menu otherMenu) {
         super(otherMenu);
     }
 
-    public GameMenu(Simulation gameInstance){
+    public GameMenu(Simulation gameInstance) {
         super();
         setSimulationInstance(gameInstance);
 
@@ -25,7 +25,7 @@ public class GameMenu extends Menu {
     @Override
     public void createContent() throws CustomCheckedException.MissingMenuComponentException {
 
-        if(isSimulationRunning()) {
+        if (isSimulationRunning()) {
             this.addItem("CONTINUE");
         } else {
             this.addNonAnimatedItem("CONTINUE");
@@ -35,10 +35,10 @@ public class GameMenu extends Menu {
         this.addItem("OPTIONS");
         this.addItem("EXIT");
         getStage().setTitle("VIDEO GAME");
-        setTitle("E V E R S C A P E");
+        setTitle("S H O O T E R 2 D");
 
 
-        if(isSimulationRunning()) {
+        if (isSimulationRunning()) {
             getItem("CONTINUE").setOnMouseReleased(event -> {
                 getStage().close();
                 getStage().setScene(getSimulationInstance().getScene());

@@ -1,4 +1,4 @@
-package com.matthieudeglon.shooter2d.API;
+package com.matthieudeglon.shooter2d.Menu;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.Transition;

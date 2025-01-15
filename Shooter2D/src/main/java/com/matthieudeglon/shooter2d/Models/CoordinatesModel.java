@@ -10,11 +10,14 @@ public class CoordinatesModel {
     }
 
     @Override
-    public String toString() { return "Coordinates{" + "x=" + x + ", y=" + y + '}'; }
+    public String toString() {
+        return "Coordinates{" + "x=" + x + ", y=" + y + '}';
+    }
 
     public double getX() {
         return x;
     }
+
     public double getY() {
         return y;
     }

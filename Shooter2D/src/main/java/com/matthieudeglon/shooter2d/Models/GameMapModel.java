@@ -25,16 +25,15 @@ public class GameMapModel {
     private final int _rows;
 
 
-    private final Map<String,CoordinatesModel> playerAndBonusPositions;
+    private final Map<String, CoordinatesModel> playerAndBonusPositions;
 
 
     public GameMapModel(double width, double height,
-                   Image tileSet, int cellSide,
-                   int columns, int rows,
-                   Set<Integer> passableCodes, Set<Integer> unpassableCodes,
-                   List<String[]> mapTileComposition,
-                   Map<String, CoordinatesModel> coordinateDictionary)
-    {
+                        Image tileSet, int cellSide,
+                        int columns, int rows,
+                        Set<Integer> passableCodes, Set<Integer> unpassableCodes,
+                        List<String[]> mapTileComposition,
+                        Map<String, CoordinatesModel> coordinateDictionary) {
 
         _width = width;
         _height = height;
@@ -44,7 +43,7 @@ public class GameMapModel {
 
         playerAndBonusPositions = coordinateDictionary;
 
-        generateMap(columns,rows,cellSide,mapTileComposition, passableCodes, unpassableCodes, tileSet);
+        generateMap(columns, rows, cellSide, mapTileComposition, passableCodes, unpassableCodes, tileSet);
 
         passableTiles = tiles.stream().filter(Tile::isPassableForPlayer).collect(Collectors.toList());
 
@@ -53,13 +52,12 @@ public class GameMapModel {
     /* Core function */
     public void generateMap(int horizontalCells, int verticalCells, int cellSide,
                             List<String[]> mapTileComposition,
-                            Set<Integer> passableCodes,Set<Integer> unpassableCodes,
+                            Set<Integer> passableCodes, Set<Integer> unpassableCodes,
                             Image tileSet
-    )
-    {
-        int  tilePerRow = (int) (tileSet.getWidth()/ cellSide);
+    ) {
+        int tilePerRow = (int) (tileSet.getWidth() / cellSide);
 
-        IntStream.range(0,horizontalCells ).mapToObj(i ->
+        IntStream.range(0, horizontalCells).mapToObj(i ->
                 IntStream.range(0, verticalCells).mapToObj(j -> {
 
                     var code = Integer.parseInt(mapTileComposition.get(j)[i]);
@@ -75,42 +73,63 @@ public class GameMapModel {
 
                     Rectangle2D rectangle2D = new Rectangle2D(pos_col, pos_row, cellSide, cellSide);
 
-                    return new Tile(i*getTileWidth(), j*getTileHeight(), getTileWidth(),
-                            getTileHeight(), passable,not_passable_for_p,tileSet, rectangle2D);
+                    return new Tile(i * getTileWidth(), j * getTileHeight(), getTileWidth(),
+                            getTileHeight(), passable, not_passable_for_p, tileSet, rectangle2D);
 
                 })
         ).flatMap(s -> s).forEach(cells.getChildren()::add);
 
-        tiles = cells.getChildren().stream().parallel().map(s->(Tile) s).collect(Collectors.toList());
+        tiles = cells.getChildren().stream().parallel().map(s -> (Tile) s).collect(Collectors.toList());
 
     }
 
 
     /* Utils */
-    public CoordinatesModel get_position_of(String id) { return convert_tiles_in_pixel(getPlayerAndBonusPositions().get(id)); }
-
-    public CoordinatesModel convert_tiles_in_pixel(CoordinatesModel tile_coordinates)
-    {
-        return new CoordinatesModel(tile_coordinates.getX()* getTileWidth(),
-                tile_coordinates.getY() * getTileHeight() );
+    public CoordinatesModel get_position_of(String id) {
+        return convert_tiles_in_pixel(getPlayerAndBonusPositions().get(id));
     }
 
-    public int single_index(int x, int y) {  return  (x * _rows) + y;  }
+    public CoordinatesModel convert_tiles_in_pixel(CoordinatesModel tile_coordinates) {
+        return new CoordinatesModel(tile_coordinates.getX() * getTileWidth(),
+                tile_coordinates.getY() * getTileHeight());
+    }
 
-    public double getTileWidth() { return _width/ _columns; }
+    public int single_index(int x, int y) {
+        return (x * _rows) + y;
+    }
 
-    public double getTileHeight(){ return _height/ _rows; }
+    public double getTileWidth() {
+        return _width / _columns;
+    }
 
-    public CoordinatesModel getRandomLocation(){
+    public double getTileHeight() {
+        return _height / _rows;
+    }
+
+    public CoordinatesModel getRandomLocation() {
         int index = new Random().nextInt(passableTiles.size());
         return passableTiles.get(index).getPixelPositionOfTheTile();
     }
 
     /* Getters  */
-    public List<Tile> get_tile_matrix() { return tiles;  }
-    public Map<String, CoordinatesModel> getPlayerAndBonusPositions() { return playerAndBonusPositions; }
-    public Pane getCells() { return cells; }
-    public double get_width()  { return _width; }
-    public double get_height() { return _height; }
+    public List<Tile> get_tile_matrix() {
+        return tiles;
+    }
+
+    public Map<String, CoordinatesModel> getPlayerAndBonusPositions() {
+        return playerAndBonusPositions;
+    }
+
+    public Pane getCells() {
+        return cells;
+    }
+
+    public double get_width() {
+        return _width;
+    }
+
+    public double get_height() {
+        return _height;
+    }
 
 }

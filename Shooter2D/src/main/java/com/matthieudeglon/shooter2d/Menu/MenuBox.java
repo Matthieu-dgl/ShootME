@@ -1,4 +1,4 @@
-package com.matthieudeglon.shooter2d.API;
+package com.matthieudeglon.shooter2d.Menu;
 
 import com.matthieudeglon.shooter2d.Customs.CustomCheckedException;
 import javafx.scene.layout.VBox;

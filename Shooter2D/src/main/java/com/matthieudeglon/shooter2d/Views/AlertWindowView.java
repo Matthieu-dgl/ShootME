@@ -1,6 +1,6 @@
 package com.matthieudeglon.shooter2d.Views;
 
-import com.matthieudeglon.shooter2d.API.Menu;
+import com.matthieudeglon.shooter2d.Menu.Menu;
 import com.matthieudeglon.shooter2d.Customs.CustomCheckedException;
 import com.matthieudeglon.shooter2d.Customs.CustomSettings;
 import javafx.scene.image.ImageView;
@@ -11,7 +11,7 @@ public class AlertWindowView extends Menu {
     double _candidateHeight;
     String _candidateColorMode;
 
-    AlertWindowView(Menu otherMenu, double candidateWidth, double candidateHeight, String candidateColorMode){
+    AlertWindowView(Menu otherMenu, double candidateWidth, double candidateHeight, String candidateColorMode) {
         super(otherMenu);
         _candidateWidth = candidateWidth;
         _candidateHeight = candidateHeight;
@@ -23,7 +23,7 @@ public class AlertWindowView extends Menu {
         ImageView alertImage;
         try {
             alertImage = Menu.retrieveImage(CustomSettings.URL_WARNING_ICON, 1, 1);
-        }catch(CustomCheckedException.FileManagementException e){
+        } catch (CustomCheckedException.FileManagementException e) {
             System.out.println(e.toString() + " Alert image not found. Using alternative one. Continuing");
             alertImage = new ImageView(new Rectangle(10, 10).snapshot(null, null));
         }

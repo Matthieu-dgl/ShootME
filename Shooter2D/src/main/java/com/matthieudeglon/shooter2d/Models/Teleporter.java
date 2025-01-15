@@ -28,19 +28,18 @@ public class Teleporter extends PicturedObject {
 
     /* Collisions & action management */
     @Override
-    public HitBox getHitbox(){
-        return new HitBox(getCurrentYPosition() + (getScaledHeight()*.25), getCurrentXPosition()+(getScaledWidth()*.25),
-                getScaledWidth()*.5 , getScaledHeight()*.5 );
+    public HitBox getHitbox() {
+        return new HitBox(getCurrentYPosition() + (getScaledHeight() * .25), getCurrentXPosition() + (getScaledWidth() * .25),
+                getScaledWidth() * .5, getScaledHeight() * .5);
     }
 
     @Override
     public void action(Character S) {
-        if(intersect(S)) S.positionTo(destination);
+        if (intersect(S)) S.positionTo(destination);
     }
 
-    protected final void setDestination(Teleporter T)
-    {
-        destination = new CoordinatesModel(T.getCurrentXPosition() + getScaledWidth()/4.0 ,T.getCurrentYPosition()+ getScaledHeight());
+    protected final void setDestination(Teleporter T) {
+        destination = new CoordinatesModel(T.getCurrentXPosition() + getScaledWidth() / 4.0, T.getCurrentYPosition() + getScaledHeight());
     }
 
 
@@ -52,7 +51,6 @@ public class Teleporter extends PicturedObject {
         rotation.setCycleCount(Animation.INDEFINITE);
         rotation.play();
     }
-
 
 
 }

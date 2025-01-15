@@ -1,6 +1,6 @@
 package com.matthieudeglon.shooter2d.Views;
 
-import com.matthieudeglon.shooter2d.API.Menu;
+import com.matthieudeglon.shooter2d.Menu.Menu;
 import com.matthieudeglon.shooter2d.Customs.CustomCheckedException;
 import com.matthieudeglon.shooter2d.Customs.CustomSettings;
 import com.matthieudeglon.shooter2d.Models.Character;

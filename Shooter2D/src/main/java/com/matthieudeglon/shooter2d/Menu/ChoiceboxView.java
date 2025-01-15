@@ -1,4 +1,4 @@
-package com.matthieudeglon.shooter2d.API;
+package com.matthieudeglon.shooter2d.Menu;
 
 import com.matthieudeglon.shooter2d.Customs.CustomCheckedException;
 import javafx.geometry.Pos;
@@ -27,24 +27,24 @@ class ChoiceboxView extends VBox {
         _dict = mapImageToURL;
 
         setAlignment(Pos.TOP_CENTER);
-        setSpacing(0.01*Menu.getMenuHeight());
+        setSpacing(0.01 * Menu.getMenuHeight());
 
         final HBox imageBox = new HBox();
         imageBox.setMinHeight(0);
         imageBox.setAlignment(Pos.BOTTOM_CENTER);
 
-        _selector.getSelectionAsProperty().addListener((observable,  oldValue,  selected) ->
+        _selector.getSelectionAsProperty().addListener((observable, oldValue, selected) ->
         {
             ImageView image;
             try {
                 image = Menu.retrieveImage(_dict.get(selected), _spritesheetRow, 1);
-            }catch (CustomCheckedException.FileManagementException e){
+            } catch (CustomCheckedException.FileManagementException e) {
                 System.out.println(e.toString() + " ChoiceBox's image image not found. Using alternative one. Continuing");
                 image = new ImageView(new Rectangle(10, 10).snapshot(null, null));
             }
 
             image.setPreserveRatio(true);
-            image.setFitHeight(0.2* _customScale *Menu.getMenuHeight());
+            image.setFitHeight(0.2 * _customScale * Menu.getMenuHeight());
 
             imageBox.getChildren().removeIf(i -> i instanceof ImageView);
             imageBox.getChildren().add(image);
@@ -52,7 +52,7 @@ class ChoiceboxView extends VBox {
         });
 
         mapImageToURL.forEach((key, value) -> _selector.addTag(key));
-        getChildren().addAll(imageBox,_selector);
+        getChildren().addAll(imageBox, _selector);
 
     }
 
@@ -61,7 +61,12 @@ class ChoiceboxView extends VBox {
         _selector.setDefaultIndex(default_index);
     }
 
-    public String getValue() { return _selector.getText(); }
-    public String getName(){ return _name; }
+    public String getValue() {
+        return _selector.getText();
+    }
+
+    public String getName() {
+        return _name;
+    }
 }
 

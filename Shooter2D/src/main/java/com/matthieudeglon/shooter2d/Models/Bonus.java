@@ -15,16 +15,15 @@ public class Bonus extends PicturedObject {
     private final GameMapModel _map;
 
     /* Constructor */
-    public Bonus(Pane simulationRoot, GameMapModel map, String url, int nRows, int nCols, int numberOfFrames, Pair<Double, Double> scalingFactor)
-    {
-        super(scalingFactor,url,nRows,nCols);
+    public Bonus(Pane simulationRoot, GameMapModel map, String url, int nRows, int nCols, int numberOfFrames, Pair<Double, Double> scalingFactor) {
+        super(scalingFactor, url, nRows, nCols);
         _map = map;
 
         applyCustomScaleToObject(Constants.HEART_SCALE);
 
 
         _waitingTime = waitSomeTimeBeforeDisplayingBonusAgain();
-        createAndStartAnimation(numberOfFrames,nCols);
+        createAndStartAnimation(numberOfFrames, nCols);
 
         generate();
 
@@ -33,15 +32,21 @@ public class Bonus extends PicturedObject {
     }
 
     /* Movement & action management */
-    private void pushInsideBorder() { positionTo(new CoordinatesModel(getInMapXPosition(), getInMapYPosition())); }
+    private void pushInsideBorder() {
+        positionTo(new CoordinatesModel(getInMapXPosition(), getInMapYPosition()));
+    }
 
-    private double getInMapXPosition() { return getCurrentXPosition()- getScaledWidth(); }
+    private double getInMapXPosition() {
+        return getCurrentXPosition() - getScaledWidth();
+    }
 
-    private double getInMapYPosition() { return getCurrentYPosition()- getScaledHeight(); }
+    private double getInMapYPosition() {
+        return getCurrentYPosition() - getScaledHeight();
+    }
 
     @Override
     public void action(Character S) {
-        if(intersect(S)) bonus_effect(S);
+        if (intersect(S)) bonus_effect(S);
     }
 
     private void bonus_effect(Character S) {
@@ -50,8 +55,7 @@ public class Bonus extends PicturedObject {
         generate();
     }
 
-    public void generate()
-    {
+    public void generate() {
         positionTo(_map.getRandomLocation());
         if (getHitbox().isOutOfMap(_map)) pushInsideBorder();
         _waitingTime.play();

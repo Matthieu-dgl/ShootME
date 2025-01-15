@@ -7,20 +7,17 @@ import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         launch(args);
     }
 
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage) throws Exception {
 
         stage.initStyle(StageStyle.UNDECORATED);
         GameMenu M = new GameMenu();
 
         M.readProperties();
         M.start(stage);
-
-
 
 
     }

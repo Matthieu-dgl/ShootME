@@ -32,7 +32,7 @@ public class Simulation extends Application {
     private double _height;
     private double _width;
 
-    private Pair<Double,Double> scaling_factors;
+    private Pair<Double, Double> scaling_factors;
 
     private GameMapModel _gameMap;
 

@@ -12,14 +12,13 @@ public class Tile extends ImageView {
     private final boolean passableForPlayer;
     private final boolean passableForProjectile;
 
-    Tile(double posX, double posY, double width, double height, boolean PassableForPlayers, boolean notPassableForProjectile, Image tileSet, Rectangle2D portionOfTileSet)
-    {
-        relocate(posX,posY);
+    Tile(double posX, double posY, double width, double height, boolean PassableForPlayers, boolean notPassableForProjectile, Image tileSet, Rectangle2D portionOfTileSet) {
+        relocate(posX, posY);
 
         setFitWidth(width);
         setFitHeight(height);
 
-        tilePixelPosition = new CoordinatesModel(posX,posY);
+        tilePixelPosition = new CoordinatesModel(posX, posY);
 
         passableForPlayer = PassableForPlayers;
         passableForProjectile = !notPassableForProjectile;
@@ -34,8 +33,12 @@ public class Tile extends ImageView {
         return this.tilePixelPosition;
     }
 
-    public boolean isPassableForPlayer() { return passableForPlayer; }
+    public boolean isPassableForPlayer() {
+        return passableForPlayer;
+    }
 
-    public boolean isPassableForProjectile() { return passableForProjectile; }
+    public boolean isPassableForProjectile() {
+        return passableForProjectile;
+    }
 
 }

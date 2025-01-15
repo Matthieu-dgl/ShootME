@@ -1,4 +1,4 @@
-package com.matthieudeglon.shooter2d.API;
+package com.matthieudeglon.shooter2d.Menu;
 
 import javafx.beans.property.StringPropertyBase;
 import javafx.geometry.Pos;
@@ -21,12 +21,18 @@ class NonAnimatedItem extends StackPane {
     protected NonAnimatedItem(String name, double itemWidthRatio, double itemHeightRatio) {
         _nameProperty = new StringPropertyBase() {
             @Override
-            public Object getBean() { return null; }
-            @Override
-            public String getName() { return null; }};
+            public Object getBean() {
+                return null;
+            }
 
-        var effectiveWidthRatio = itemWidthRatio<0? 0.19 : itemWidthRatio;
-        var effectiveHeightRatio = itemHeightRatio<0? 0.05 : itemHeightRatio;
+            @Override
+            public String getName() {
+                return null;
+            }
+        };
+
+        var effectiveWidthRatio = itemWidthRatio < 0 ? 0.19 : itemWidthRatio;
+        var effectiveHeightRatio = itemHeightRatio < 0 ? 0.05 : itemHeightRatio;
 
         Color textColor = Menu.getColorPalette().dead_color;
         Color backgroundColor = Menu.getColorPalette().basic_secondary_color;
@@ -60,7 +66,7 @@ class NonAnimatedItem extends StackPane {
 
     }
 
-    protected StringPropertyBase getNameAsProperty(){
+    protected StringPropertyBase getNameAsProperty() {
         return _nameProperty;
     }
 

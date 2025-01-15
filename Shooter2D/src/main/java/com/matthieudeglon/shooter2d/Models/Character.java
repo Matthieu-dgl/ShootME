@@ -18,14 +18,13 @@ import javafx.util.Pair;
 public class Character extends DynamicObject {
 
     private final String _id;
-    private final IntegerProperty _frame  = new SimpleIntegerProperty(0);
+    private final IntegerProperty _frame = new SimpleIntegerProperty(0);
     private final HealthBar _healthBar;
     private boolean _goNorth, _goSouth, _goEast, _goWest;
     private final BooleanProperty canShoot = new SimpleBooleanProperty(true);
     private final String _playerName;
 
-    public Character(Pane simulationRoot, GameMapModel M, Pair<Double, Double> scalingFactor, String url, int n_rows, int n_cols, String id, Direction D, String playerName)
-    {
+    public Character(Pane simulationRoot, GameMapModel M, Pair<Double, Double> scalingFactor, String url, int n_rows, int n_cols, String id, Direction D, String playerName) {
         super(scalingFactor, url, n_rows, n_cols);
         this._playerName = playerName;
         this._id = id;
@@ -50,17 +49,25 @@ public class Character extends DynamicObject {
 
     /* Movement & action management */
     @Override
-    public void defaultMovement(GameMapModel M){ move(M);}
+    public void defaultMovement(GameMapModel M) {
+        move(M);
+    }
 
     @Override
-    public HitBox getHitbox(){ return new HitBox(getCurrentYPosition() , getCurrentXPosition() + getScaledWidth() * 0.15,
-            getScaledWidth() - getScaledWidth() * 0.15 , getScaledHeight()*.9 ); }
-    @Override
-    protected void action(Character S) { }
+    public HitBox getHitbox() {
+        return new HitBox(getCurrentYPosition(), getCurrentXPosition() + getScaledWidth() * 0.15,
+                getScaledWidth() - getScaledWidth() * 0.15, getScaledHeight() * .9);
+    }
 
     @Override
-    public HitBox getMoveBox(){ return new HitBox( getFutureY() + (getScaledHeight() * 2.0/3.0), getFutureX(),
-            getScaledWidth() , getScaledHeight() /3.0); }
+    protected void action(Character S) {
+    }
+
+    @Override
+    public HitBox getMoveBox() {
+        return new HitBox(getFutureY() + (getScaledHeight() * 2.0 / 3.0), getFutureX(),
+                getScaledWidth(), getScaledHeight() / 3.0);
+    }
 
     private void move(GameMapModel M) {
 
@@ -75,18 +82,17 @@ public class Character extends DynamicObject {
         }
 
     }
-    protected void shoot(Pane root){
-        if(canShoot.getValue())
-        {
-            root.getChildren().add(new Projectiles( getResolutionScalingFactors(), CustomSettings.URL_PROJECTILE,this));
+
+    protected void shoot(Pane root) {
+        if (canShoot.getValue()) {
+            root.getChildren().add(new Projectiles(getResolutionScalingFactors(), CustomSettings.URL_PROJECTILE, this));
             shootingCooldown.play();
         }
     }
 
     /* Utils */
 
-    public boolean checkIfPassable(Tile t)
-    {
+    public boolean checkIfPassable(Tile t) {
         return t.isPassableForPlayer();
     }
 
@@ -94,33 +100,34 @@ public class Character extends DynamicObject {
         return (Math.abs(getDeltaX()) > 0 || Math.abs(getDeltaY()) > 0);
     }
 
-    private ChangeListener<Object> getListener() { return (obs, ov, nv) ->
-           getPicture().setViewport(new Rectangle2D( _frame.get()*get_width(),
-                    getCurrentDirection().getOffset() * get_height(),
-                    get_width(), get_height())); }
+    private ChangeListener<Object> getListener() {
+        return (obs, ov, nv) ->
+                getPicture().setViewport(new Rectangle2D(_frame.get() * get_width(),
+                        getCurrentDirection().getOffset() * get_height(),
+                        get_width(), get_height()));
+    }
 
     private void updateMovement() {
         setDeltaX(0);
         setDeltaY(0);
-        if (_goNorth) setDeltaY(- getSpeed());
+        if (_goNorth) setDeltaY(-getSpeed());
         if (_goSouth) setDeltaY(getSpeed());
-        if (_goEast)  setDeltaX(getSpeed());
-        if (_goWest)  setDeltaX(-getSpeed());
+        if (_goEast) setDeltaX(getSpeed());
+        if (_goWest) setDeltaX(-getSpeed());
     }
 
-    private void updateDirection(CoordinatesModel destination)
-    {
+    private void updateDirection(CoordinatesModel destination) {
         Direction D;
         if (Math.abs(getDeltaX()) > Math.abs(getDeltaY()))
-            D = (destination.getX()  < getCurrentXPosition())? Direction.LEFT : Direction.RIGHT;
+            D = (destination.getX() < getCurrentXPosition()) ? Direction.LEFT : Direction.RIGHT;
         else
-            D = (destination.getY()  < getCurrentYPosition())? Direction.UP:Direction.DOWN;
+            D = (destination.getY() < getCurrentYPosition()) ? Direction.UP : Direction.DOWN;
 
         set_currentDirection(D);
     }
 
     /* Animations */
-    private final  Timeline shootingCooldown = new Timeline(
+    private final Timeline shootingCooldown = new Timeline(
             new KeyFrame(Duration.ZERO, event -> canShoot.setValue(false)),
             new KeyFrame(Duration.seconds(CustomSettings.SHOOTING_COOLDOWN), event -> canShoot.setValue(true))
     );
@@ -129,12 +136,15 @@ public class Character extends DynamicObject {
     public final void setGoNorth(boolean _goNorth) {
         this._goNorth = _goNorth;
     }
+
     public final void setGoSouth(boolean _goSouth) {
         this._goSouth = _goSouth;
     }
+
     public final void setGoEast(boolean _goEast) {
         this._goEast = _goEast;
     }
+
     public final void setGoWest(boolean _goWest) {
         this._goWest = _goWest;
     }
@@ -143,9 +153,11 @@ public class Character extends DynamicObject {
     public final String get_id() {
         return _id;
     }
+
     public final HealthBar getHBar() {
         return _healthBar;
     }
+
     public final String getPlayerName() {
         return _playerName;
     }
