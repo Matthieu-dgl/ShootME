@@ -2,7 +2,8 @@ package com.matthieudeglon.shooter2d.Models;
 
 import com.matthieudeglon.shooter2d.Customs.CustomCheckedException;
 import com.matthieudeglon.shooter2d.Customs.CustomSettings;
-import com.matthieudeglon.shooter2d.Views.GameMenuView;
+import com.matthieudeglon.shooter2d.Direction;
+import com.matthieudeglon.shooter2d.Views.GameMenu;
 import com.matthieudeglon.shooter2d.Views.WinnerWindow;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -210,7 +211,7 @@ public class Simulation extends Application {
         });}
 
     private void handleEscape() throws CustomCheckedException.MissingMenuComponentException {
-        var game_menu = new GameMenuView(this);
+        var game_menu = new GameMenu(this);
         stopSimulation();
         try {
             game_menu.readProperties();

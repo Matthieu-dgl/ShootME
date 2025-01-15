@@ -1,8 +1,8 @@
 package com.matthieudeglon.shooter2d.Models;
 
+
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -62,7 +62,7 @@ public abstract class PicturedObject extends MapObject {
     protected abstract void action(Character S);
 
     /* Getters */
-    public final Node getPicture() { return _picture; }
+    public final ImageView getPicture() { return _picture; }
 
     public final boolean hasToBeRemoved() {
         return _toBeRemoved.get();

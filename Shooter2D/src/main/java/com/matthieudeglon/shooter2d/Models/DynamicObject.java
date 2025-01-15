@@ -1,13 +1,13 @@
 package com.matthieudeglon.shooter2d.Models;
 
+import com.matthieudeglon.shooter2d.Direction;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.control.skin.TextInputControlSkin;
 import javafx.util.Pair;
 
 public abstract class DynamicObject extends PicturedObject {
 
-    private final ObjectProperty<TextInputControlSkin.Direction> _currentDirection = new SimpleObjectProperty<>();
+    private final ObjectProperty<Direction> _currentDirection = new SimpleObjectProperty<>();
     private double  _speed;
     private double  _deltaX, _deltaY;
 
@@ -42,8 +42,6 @@ public abstract class DynamicObject extends PicturedObject {
 
     protected final HitBox getDefaultMoveBox(){ return new HitBox( getFutureY() , getFutureX(), getScaledWidth() , getScaledHeight()); }
 
-    protected abstract void action(Character S);
-
     protected HitBox getMoveBox(){ return getDefaultMoveBox();}
 
 
@@ -63,12 +61,18 @@ public abstract class DynamicObject extends PicturedObject {
 
     }
 
+
+
+
     /* Setters */
     public final void setDeltaX(double deltaX) { _deltaX = deltaX; }
 
     public final void setDeltaY(double deltaY) { _deltaY = deltaY; }
 
-    public final void set_currentDirection(TextInputControlSkin.Direction currentDirection) { _currentDirection.set(currentDirection); }
+    public final void set_currentDirection(Direction currentDirection) { _currentDirection.set(currentDirection); }
+
+
+
 
     /* Getters */
     public final double getSpeed() { return _speed; }
@@ -77,8 +81,12 @@ public abstract class DynamicObject extends PicturedObject {
 
     public final double getDeltaY() { return _deltaY; }
 
-    public final TextInputControlSkin.Direction getCurrentDirection() { return _currentDirection.get(); }
+    public final Direction getCurrentDirection() { return _currentDirection.get(); }
 
-    public final ObjectProperty<TextInputControlSkin.Direction> getCurrentDirectionProperty() { return _currentDirection; }
+    public final ObjectProperty<Direction> getCurrentDirectionProperty() { return _currentDirection; }
+
+
+
+
 
 }

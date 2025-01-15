@@ -2,6 +2,7 @@ package com.matthieudeglon.shooter2d.Models;
 
 
 import com.matthieudeglon.shooter2d.Customs.CustomSettings;
+import com.matthieudeglon.shooter2d.Direction;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.BooleanProperty;
@@ -94,7 +95,7 @@ public class Character extends DynamicObject {
     }
 
     private ChangeListener<Object> getListener() { return (obs, ov, nv) ->
-            getPicture().setViewOrder(new Rectangle2D( _frame.get()*get_width(),
+           getPicture().setViewport(new Rectangle2D( _frame.get()*get_width(),
                     getCurrentDirection().getOffset() * get_height(),
                     get_width(), get_height())); }
 

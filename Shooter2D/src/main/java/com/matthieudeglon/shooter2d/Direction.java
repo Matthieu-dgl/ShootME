@@ -1,4 +1,4 @@
-package com.matthieudeglon.shooter2d.Models;
+package com.matthieudeglon.shooter2d;
 
 public enum Direction {
     DOWN(0), LEFT(1), RIGHT(2), UP(3);

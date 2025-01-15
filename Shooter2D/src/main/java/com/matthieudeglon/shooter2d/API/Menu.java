@@ -91,7 +91,7 @@ public abstract class Menu extends Application {
         show();
     }
 
-    protected void tryToStart(SubmenuView new_menu) {
+    protected void tryToStart(Menu new_menu) {
         try {
             new_menu.start(getStage());
         } catch (CustomCheckedException.MissingMenuComponentException e) {

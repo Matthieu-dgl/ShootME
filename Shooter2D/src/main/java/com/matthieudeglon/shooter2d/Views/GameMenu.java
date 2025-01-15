@@ -5,21 +5,18 @@ import com.matthieudeglon.shooter2d.API.Menu;
 import com.matthieudeglon.shooter2d.Customs.CustomCheckedException;
 import com.matthieudeglon.shooter2d.Models.Simulation;
 
-
-import static javafx.application.Application.launch;
-
-public class GameMenuView extends Menu {
+public class GameMenu extends Menu {
 
 
-    public GameMenuView(){
+    public GameMenu(){
         super();
     }
 
-    public GameMenuView(OptionsMenu otherMenu){
+    public GameMenu(Menu otherMenu){
         super(otherMenu);
     }
 
-    public GameMenuView(Simulation gameInstance){
+    public GameMenu(Simulation gameInstance){
         super();
         setSimulationInstance(gameInstance);
 
@@ -66,14 +63,14 @@ public class GameMenuView extends Menu {
     @Override
     public void setMenuScale(double widthScale, double heightScale) throws CustomCheckedException.MissingMenuComponentException {
         super.setMenuScale(widthScale, heightScale);
-        GameMenuView newMenu = new GameMenuView(this);
+        GameMenu newMenu = new GameMenu(this);
         newMenu.start(getStage());
     }
 
     @Override
     public void setScaledPosition(double scaledPositionX, double scaledPositionY) throws CustomCheckedException.MissingMenuComponentException {
         super.setScaledPosition(scaledPositionX, scaledPositionY);
-        GameMenuView newMenu = new GameMenuView(this);
+        GameMenu newMenu = new GameMenu(this);
         newMenu.start(getStage());
     }
 

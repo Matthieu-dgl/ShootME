@@ -1,7 +1,7 @@
 package com.matthieudeglon.shooter2d.Models;
 
 import com.matthieudeglon.shooter2d.Constants.Constants;
-import javafx.scene.control.skin.TextInputControlSkin;
+import com.matthieudeglon.shooter2d.Direction;
 import javafx.util.Pair;
 
 public class Projectiles extends DynamicObject {
@@ -56,7 +56,7 @@ public class Projectiles extends DynamicObject {
     }
 
     /* Utils */
-    private void setInitialAndTranslateDirection(TextInputControlSkin.Direction D) {
+    private void setInitialAndTranslateDirection(Direction D) {
         _biasX = _biasY =0;
         switch (D) {
             case UP    ->  { set_biases(+(getScaledWidth()),-(getScaledHeight()/2)); setDeltaY(- getSpeed());}

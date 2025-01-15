@@ -1,13 +1,9 @@
 package com.matthieudeglon.shooter2d;
 
-import com.matthieudeglon.shooter2d.Views.GameMenuView;
+import com.matthieudeglon.shooter2d.Views.GameMenu;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.io.IOException;
 
 public class Main extends Application {
 
@@ -19,7 +15,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception{
 
         stage.initStyle(StageStyle.UNDECORATED);
-        GameMenuView M = new GameMenuView();
+        GameMenu M = new GameMenu();
 
         M.readProperties();
         M.start(stage);

@@ -41,7 +41,7 @@ public class OptionsMenu extends Menu {
         getStage().setTitle("VIDEO GAME");
 
         getItem("BACK").setOnMouseReleased(event -> {
-            GameMenuView mainMenu = new GameMenuView(this);
+            GameMenu mainMenu = new GameMenu(this);
             try {
                 mainMenu.start(getStage());
             } catch (CustomCheckedException.MissingMenuComponentException e) {

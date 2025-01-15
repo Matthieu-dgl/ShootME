@@ -67,7 +67,7 @@ public class WinnerWindow extends Menu {
         TimerTask task2 = new TimerTask() {
             public void run() {
                 getSceneFromStage().addEventHandler(KeyEvent.KEY_PRESSED, ke -> {
-                    GameMenuView new_menu = new GameMenuView();
+                    GameMenu new_menu = new GameMenu();
                     try {
                         new_menu.start(getStage());
                         timer.cancel();
