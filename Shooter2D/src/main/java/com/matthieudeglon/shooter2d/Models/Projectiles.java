@@ -11,7 +11,7 @@ public class Projectiles extends DynamicObject {
     private final String Owner;
 
     /* Constructor */
-    public Projectiles(Pair<Double, Double> scalingFactor, String url, Sprite S)
+    public Projectiles(Pair<Double, Double> scalingFactor, String url, Character S)
     {
         super(scalingFactor, url);
 
@@ -34,7 +34,7 @@ public class Projectiles extends DynamicObject {
         else positionTo(getFutureCoordinates());
     }
 
-    public void action(Sprite S) {
+    public void action(Character S) {
         if(intersect(S)) hit( S);
     }
 
@@ -46,7 +46,7 @@ public class Projectiles extends DynamicObject {
     @Override
     public boolean checkIfPassable(Tile t) { return t.isPassableForProjectile(); }
 
-    private void hit(Sprite S)
+    private void hit(Character S)
     {
         if(!hasToBeRemoved() && !Owner.equals(S.get_id()))
         {
@@ -65,13 +65,13 @@ public class Projectiles extends DynamicObject {
             case RIGHT ->  { set_biases((+(getScaledWidth()*2)), getScaledHeight()/2);setDeltaX(+getSpeed());}
         }
     }
-    private double get_biased_y_position(Sprite S) { return S.getFutureY() + _biasY; }
+    private double get_biased_y_position(Character S) { return S.getFutureY() + _biasY; }
 
-    private double get_biased_x_position(Sprite S) {
+    private double get_biased_x_position(Character S) {
         return S.getFutureX() + _biasX;
     }
 
-    private CoordinatesModel getBiasedStartingPosition(Sprite S) { return new CoordinatesModel(get_biased_x_position(S), get_biased_y_position(S)); }
+    private CoordinatesModel getBiasedStartingPosition(Character S) { return new CoordinatesModel(get_biased_x_position(S), get_biased_y_position(S)); }
 
     private void set_biases(double biasX, double biasY)
     {

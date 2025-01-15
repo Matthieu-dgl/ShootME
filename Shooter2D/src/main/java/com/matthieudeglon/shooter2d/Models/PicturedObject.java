@@ -3,10 +3,10 @@ package com.matthieudeglon.shooter2d.Models;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 
+import javafx.scene.Node;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.Pair;
-
-import javax.swing.text.html.ImageView;
 
 public abstract class PicturedObject extends MapObject {
 
@@ -45,7 +45,7 @@ public abstract class PicturedObject extends MapObject {
 
 
     protected final void scalePicture() {
-        this._picture.setViewIndex( _customScale * getResolutionScalingFactors().getKey()  * get_width());
+        this._picture.setViewOrder( _customScale * getResolutionScalingFactors().getKey()  * get_width());
         this._picture.setFitHeight(_customScale * getResolutionScalingFactors().getValue() * get_height());
         this._picture.setPreserveRatio(false);
     }
@@ -62,7 +62,7 @@ public abstract class PicturedObject extends MapObject {
     protected abstract void action(Character S);
 
     /* Getters */
-    public final ImageView getPicture() { return _picture; }
+    public final Node getPicture() { return _picture; }
 
     public final boolean hasToBeRemoved() {
         return _toBeRemoved.get();

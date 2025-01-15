@@ -13,7 +13,7 @@ public class HealthBar extends MapObject {
     private final DoubleProperty healthPercentage;
 
     /* Constructors */
-    public HealthBar(Sprite S)
+    public HealthBar(Character S)
     {
         super(S.getScaledWidth(), getHBarHeightProportionalToSpriteHeight(S.getScaledHeight()));
 
@@ -82,7 +82,7 @@ public class HealthBar extends MapObject {
     private static double getHBarHeightProportionalToSpriteHeight(double spriteHeight) {
         return  (spriteHeight * Constants.HB_PROPORTIONAL_WIDTH);}
 
-    private static CoordinatesModel getDefaultHBarPosition(Sprite S) {
+    private static CoordinatesModel getDefaultHBarPosition(Character S) {
         return new CoordinatesModel(0, (S.getScaledHeight() * 1.1));
     }
 

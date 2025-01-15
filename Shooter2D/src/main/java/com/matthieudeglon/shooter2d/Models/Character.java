@@ -1,7 +1,7 @@
 package com.matthieudeglon.shooter2d.Models;
 
 
-import com.matthieudeglon.shooter2d.Constants.Constants;
+import com.matthieudeglon.shooter2d.Customs.CustomSettings;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.BooleanProperty;
@@ -9,13 +9,12 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
-import javafx.scene.control.skin.TextInputControlSkin;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import javafx.util.Pair;
-import javafx.geometry.Rectangle2D;
 
-public class Sprite extends DynamicObject {
+public class Character extends DynamicObject {
 
     private final String _id;
     private final IntegerProperty _frame  = new SimpleIntegerProperty(0);
@@ -24,14 +23,14 @@ public class Sprite extends DynamicObject {
     private final BooleanProperty canShoot = new SimpleBooleanProperty(true);
     private final String _playerName;
 
-    public Sprite(Pane simulationRoot, GameMapModel M, Pair<Double, Double> scalingFactor, String url, int n_rows, int n_cols, String id, TextInputControlSkin.Direction D, String playerName)
+    public Character(Pane simulationRoot, GameMapModel M, Pair<Double, Double> scalingFactor, String url, int n_rows, int n_cols, String id, Direction D, String playerName)
     {
         super(scalingFactor, url, n_rows, n_cols);
         this._playerName = playerName;
         this._id = id;
 
-        setSpeed(Constants.PLAYER_SPEED);
-        applyCustomScaleToObject(Constants.PLAYER_SCALE);
+        setSpeed(CustomSettings.PLAYER_SPEED);
+        applyCustomScaleToObject(CustomSettings.PLAYER_SCALE);
 
         /* Add a triggered event to change the view accordingly to the direction of the sprite */
         ChangeListener<Object> updateImage = getListener();
@@ -55,8 +54,8 @@ public class Sprite extends DynamicObject {
     @Override
     public HitBox getHitbox(){ return new HitBox(getCurrentYPosition() , getCurrentXPosition() + getScaledWidth() * 0.15,
             getScaledWidth() - getScaledWidth() * 0.15 , getScaledHeight()*.9 ); }
-
-    protected void action(Sprite S) { }
+    @Override
+    protected void action(Character S) { }
 
     @Override
     public HitBox getMoveBox(){ return new HitBox( getFutureY() + (getScaledHeight() * 2.0/3.0), getFutureX(),
@@ -78,7 +77,7 @@ public class Sprite extends DynamicObject {
     protected void shoot(Pane root){
         if(canShoot.getValue())
         {
-            root.getChildren().add(new Projectiles( getResolutionScalingFactors(), Constants.URL_PROJECTILE,this));
+            root.getChildren().add(new Projectiles( getResolutionScalingFactors(), CustomSettings.URL_PROJECTILE,this));
             shootingCooldown.play();
         }
     }
@@ -95,10 +94,9 @@ public class Sprite extends DynamicObject {
     }
 
     private ChangeListener<Object> getListener() { return (obs, ov, nv) ->
-            getPicture().setViewport(new Rectangle2D( _frame.get()*get_width(),
+            getPicture().setViewOrder(new Rectangle2D( _frame.get()*get_width(),
                     getCurrentDirection().getOffset() * get_height(),
                     get_width(), get_height())); }
-
 
     private void updateMovement() {
         setDeltaX(0);
@@ -111,11 +109,11 @@ public class Sprite extends DynamicObject {
 
     private void updateDirection(CoordinatesModel destination)
     {
-        TextInputControlSkin.Direction D;
+        Direction D;
         if (Math.abs(getDeltaX()) > Math.abs(getDeltaY()))
-            D = (destination.getX()  < getCurrentXPosition())? TextInputControlSkin.Direction.LEFT : TextInputControlSkin.Direction.RIGHT;
+            D = (destination.getX()  < getCurrentXPosition())? Direction.LEFT : Direction.RIGHT;
         else
-            D = (destination.getY()  < getCurrentYPosition())? TextInputControlSkin.Direction.UP: TextInputControlSkin.Direction.DOWN;
+            D = (destination.getY()  < getCurrentYPosition())? Direction.UP:Direction.DOWN;
 
         set_currentDirection(D);
     }
@@ -123,7 +121,7 @@ public class Sprite extends DynamicObject {
     /* Animations */
     private final  Timeline shootingCooldown = new Timeline(
             new KeyFrame(Duration.ZERO, event -> canShoot.setValue(false)),
-            new KeyFrame(Duration.seconds(Constants.SHOOTING_COOLDOWN), event -> canShoot.setValue(true))
+            new KeyFrame(Duration.seconds(CustomSettings.SHOOTING_COOLDOWN), event -> canShoot.setValue(true))
     );
 
     /* Setters */
