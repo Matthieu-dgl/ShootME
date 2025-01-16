@@ -14,7 +14,6 @@ public abstract class PicturedObject extends MapObject {
 
     private final BooleanProperty _toBeRemoved = new SimpleBooleanProperty(false);
 
-    /* Constructors  */
     public PicturedObject(Pair<Double, Double> scalingFactors, String url) {
         super(scalingFactors);
 
@@ -28,7 +27,6 @@ public abstract class PicturedObject extends MapObject {
         setDimensions(get_width() / n_cols, get_height() / n_rows);
     }
 
-    /* Image management */
     protected static Image retrieveImage(String URL) {
         try {
             return new Image(URL);
@@ -40,7 +38,7 @@ public abstract class PicturedObject extends MapObject {
 
 
     protected final void scalePicture() {
-        this._picture.setViewOrder(_customScale * getResolutionScalingFactors().getKey() * get_width());
+        this._picture.setFitWidth(_customScale * getResolutionScalingFactors().getKey() * get_width());
         this._picture.setFitHeight(_customScale * getResolutionScalingFactors().getValue() * get_height());
         this._picture.setPreserveRatio(false);
     }
@@ -54,7 +52,6 @@ public abstract class PicturedObject extends MapObject {
     }
 
 
-    /* Collision handling */
     protected HitBox getHitbox() {
         return new HitBox(getCurrentYPosition(), getCurrentXPosition(), getScaledWidth(), getScaledHeight());
     }
@@ -65,7 +62,6 @@ public abstract class PicturedObject extends MapObject {
 
     protected abstract void action(Character S);
 
-    /* Getters */
     public final ImageView getPicture() {
         return _picture;
     }
@@ -78,7 +74,6 @@ public abstract class PicturedObject extends MapObject {
         return _toBeRemoved;
     }
 
-    /* Setters */
     public final void applyCustomScaleToObject(double scale) {
         _customScale = scale;
         scalePicture();

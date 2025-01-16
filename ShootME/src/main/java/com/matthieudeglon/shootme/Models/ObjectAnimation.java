@@ -18,17 +18,17 @@ public class ObjectAnimation extends Transition {
     private double lastIndex;
 
     public ObjectAnimation(ImageView imageView,
-                           Duration duration,
-                           int number_of_frames, int columns,
-                           int offsetX, int offsetY,
-                           double width, double height) {
+            Duration duration,
+    int number_of_frames, int columns,
+    int offsetX, int offsetY,
+    double width, double height) {
         this.imageView = imageView;
         this.number_of_frames = number_of_frames;
-        this.columns = columns;
-        this.offsetX = offsetX;
-        this.offsetY = offsetY;
-        this.width = width;
-        this.height = height;
+        this.columns   = columns;
+        this.offsetX   = offsetX;
+        this.offsetY   = offsetY;
+        this.width     = width;
+        this.height    = height;
         setCycleDuration(duration);
         setInterpolator(Interpolator.LINEAR);
         setAutoReverse(false);
@@ -38,10 +38,11 @@ public class ObjectAnimation extends Transition {
     protected void interpolate(double k) {
         final double index = Math.min(Math.floor(k * number_of_frames), number_of_frames - 1);
         if (index != lastIndex) {
-            final double x = (index % columns) * width + offsetX;
+            final double x = (index % columns) * width  + offsetX;
             final double y = Math.floor(index / columns) * height + offsetY;
             imageView.setViewport(new Rectangle2D(x, y, width, height));
             lastIndex = index;
         }
     }
 }
+

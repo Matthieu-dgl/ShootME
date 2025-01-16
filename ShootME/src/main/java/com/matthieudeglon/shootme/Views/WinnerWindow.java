@@ -33,7 +33,7 @@ public class WinnerWindow extends Menu {
         addCentralImageView(winnerImage, 0.9, 0.9);
 
         addSecondaryTitle("The winner is " + _player.getPlayerName());
-        addFlashDisclaimer("<press a key to continue>");
+        addFlashDisclaimer("<press any key to continue>");
 
         waitAndPressToContinue(1);
     }

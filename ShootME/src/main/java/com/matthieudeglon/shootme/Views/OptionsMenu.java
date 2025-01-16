@@ -22,7 +22,7 @@ public class OptionsMenu extends Menu {
 
         setTitle("O P T I O N S");
 
-        int defaultIndex = getColorMode().equals("dark") ? 0 : 1;
+        int defaultIndex = getColorMode().equals("light") ? 0 : 1;
         this.addSelectorItem("COLOR MODE", defaultIndex, "dark", "light");
 
         this.addSelectorItem("RESOLUTION",

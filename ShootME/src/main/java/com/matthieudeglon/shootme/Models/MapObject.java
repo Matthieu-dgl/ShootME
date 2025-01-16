@@ -58,6 +58,7 @@ public abstract class MapObject extends Pane {
         return _resolutionScalingFactors;
     }
 
+    /* Setters */
     public final void set_width(double width) {
         _width = width;
     }

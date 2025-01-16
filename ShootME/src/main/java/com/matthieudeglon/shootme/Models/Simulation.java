@@ -23,7 +23,7 @@ public class Simulation extends Application {
     private final Pane root = new Pane();
     private Stage _stage;
 
-    private Character Player_1 ;
+    private Character Player_1;
     private Character Player_2;
 
     private Scene _scene;
@@ -40,15 +40,14 @@ public class Simulation extends Application {
     private final List<String> _playersUrlsSprite;
     private final List<String> _mapUrl;
 
-    public Simulation(List<String> players_names ,  List<String> players_urls_sprite,List<String> map_url )
-    {
+    public Simulation(List<String> players_names, List<String> players_urls_sprite, List<String> map_url) {
         this._playersNames = players_names;
         this._playersUrlsSprite = players_urls_sprite;
         this._mapUrl = map_url;
     }
 
 
-    private void createContent(){
+    private void createContent() {
         create_frame();
         create_map();
         create_players();
@@ -56,13 +55,13 @@ public class Simulation extends Application {
         create_bonus();
     }
 
-    private void create_bonus(){
-        new Bonus(root, _gameMap, CustomSettings.URL_HEART,1,10,10, scaling_factors);
+    private void create_bonus() {
+        new Bonus(root, _gameMap, CustomSettings.URL_HEART, 1, 10, 10, scaling_factors);
     }
 
     private void create_teleports() {
-        var T1  = new Teleporter(root,  CustomSettings.URL_TELEPORT, _gameMap, scaling_factors, "" + CustomSettings.TELEPORT_CODE + '0');
-        var T2  = new Teleporter(root,  CustomSettings.URL_TELEPORT, _gameMap, scaling_factors, "" + CustomSettings.TELEPORT_CODE + '1');
+        var T1 = new Teleporter(root, CustomSettings.URL_TELEPORT, _gameMap, scaling_factors, "" + CustomSettings.TELEPORT_CODE + '0');
+        var T2 = new Teleporter(root, CustomSettings.URL_TELEPORT, _gameMap, scaling_factors, "" + CustomSettings.TELEPORT_CODE + '1');
 
         T1.setDestination(T2);
         T2.setDestination(T1);
@@ -72,28 +71,29 @@ public class Simulation extends Application {
     private void create_map() {
         var MR = new MapReaderModel();
         _gameMap = MR.makeMapFromFileContent(getMapUrl(), _width, _height);
-        root.getChildren().add(_gameMap.getCells()); }
+        root.getChildren().add(_gameMap.getCells());
+    }
 
     private void create_players() {
-        Player_1 = new Character(root, _gameMap, scaling_factors, getIUrlsSprite(0),4, 1 ,  "" + CustomSettings.PLAYER_CODE + '0', Direction.RIGHT, getIPlayerName(0));
-        Player_2 = new Character(root, _gameMap, scaling_factors, getIUrlsSprite(1),    4, 1,   "" + CustomSettings.PLAYER_CODE + '1', Direction.LEFT, getIPlayerName(1));
+        Player_1 = new Character(root, _gameMap, scaling_factors, getIUrlsSprite(0), 4, 1, "" + CustomSettings.PLAYER_CODE + '0', Direction.RIGHT, getIPlayerName(0));
+        Player_2 = new Character(root, _gameMap, scaling_factors, getIUrlsSprite(1), 4, 1, "" + CustomSettings.PLAYER_CODE + '1', Direction.LEFT, getIPlayerName(1));
     }
 
     private void create_frame() {
-        _width =  _stage.getWidth();
+        _width = _stage.getWidth();
         _height = _stage.getHeight();
 
         /* Compute the scaling factor that will be used to update some parameters at RUNTIME*/
-        scaling_factors = new Pair<>(  _width / CustomSettings.DEFAULT_X,  _height / CustomSettings.DEFAULT_Y);
+        scaling_factors = new Pair<>(_width / CustomSettings.DEFAULT_X, _height / CustomSettings.DEFAULT_Y);
     }
 
-    public Scene getScene(){
+    public Scene getScene() {
         return _scene;
     }
 
 
     /* ---------------------------------- FIRST THINGS EXECUTED ---------------------------------- */
-    public void start(Stage stage){
+    public void start(Stage stage) {
         _stage = stage;
         stage.centerOnScreen();
 
@@ -106,7 +106,7 @@ public class Simulation extends Application {
         GAME();
 
         addKeyHandler_PRESS(_scene, Player_1, Player_2);
-        addKeyHandler_RELEASED(_scene, Player_1,Player_2);
+        addKeyHandler_RELEASED(_scene, Player_1, Player_2);
 
         _stage.setScene(_scene);
         _stage.show();
@@ -116,12 +116,13 @@ public class Simulation extends Application {
     private void GAME() {
         _timer = new AnimationTimer() {
             private long last_update = 0;
+
             @Override
             public void handle(long now) {
-                if(now-last_update >= 4_000_000) {
+                if (now - last_update >= 4_000_000) {
                     all_sprites().forEach(
                             s -> {
-                                if(s instanceof DynamicObject) ((DynamicObject) s).defaultMovement(_gameMap);
+                                if (s instanceof DynamicObject) ((DynamicObject) s).defaultMovement(_gameMap);
                                 all_players().forEach(s::action);
                             });
                     try {
@@ -139,17 +140,15 @@ public class Simulation extends Application {
 
     private void cleanDeadObjectsAndCheckForVictory() throws CustomCheckedException.MissingMenuComponentException {
         root.getChildren().removeIf(node -> (node instanceof PicturedObject) && ((PicturedObject) node).hasToBeRemoved());
-        if(all_players().size()==1)  launch_winner_window(all_players().iterator().next());
+        if (all_players().size() == 1) launch_winner_window(all_players().iterator().next());
     }
 
-    protected List<PicturedObject> all_sprites()
-    {
-        return root.getChildren().stream().parallel().filter(i -> i instanceof PicturedObject).map(n->(PicturedObject)n).collect(Collectors.toList());
+    protected List<PicturedObject> all_sprites() {
+        return root.getChildren().stream().parallel().filter(i -> i instanceof PicturedObject).map(n -> (PicturedObject) n).collect(Collectors.toList());
     }
 
-    protected Set<Character> all_players()
-    {
-        return all_sprites().stream().filter(i -> i instanceof Character).map(n->(Character)n).collect(Collectors.toSet());
+    protected Set<Character> all_players() {
+        return all_sprites().stream().filter(i -> i instanceof Character).map(n -> (Character) n).collect(Collectors.toSet());
     }
 
 
@@ -160,25 +159,21 @@ public class Simulation extends Application {
     }
 
 
-
-
-
     /* Handle Player Movements */
-    private void addKeyHandler_PRESS(Scene scene, Character s, Character p)
-    {
+    private void addKeyHandler_PRESS(Scene scene, Character s, Character p) {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, ke -> {
             {
                 switch (ke.getCode()) {
-                    case UP    ->  p.setGoNorth(true);
-                    case DOWN  ->  p.setGoSouth(true);
-                    case LEFT  ->  p.setGoWest(true);
-                    case RIGHT ->  p.setGoEast(true);
-                    case ENTER ->  p.shoot(root);
+                    case UP -> p.setGoNorth(true);
+                    case DOWN -> p.setGoSouth(true);
+                    case LEFT -> p.setGoWest(true);
+                    case RIGHT -> p.setGoEast(true);
+                    case ENTER -> p.shoot(root);
 
-                    case W    ->  s.setGoNorth(true);
-                    case S    ->  s.setGoSouth(true);
-                    case A    ->  s.setGoWest(true);
-                    case D    ->  s.setGoEast(true);
+                    case W -> s.setGoNorth(true);
+                    case S -> s.setGoSouth(true);
+                    case A -> s.setGoWest(true);
+                    case D -> s.setGoEast(true);
                     case SPACE -> s.shoot(root);
 
                     case ESCAPE -> {
@@ -190,25 +185,26 @@ public class Simulation extends Application {
                     }
                 }
             }
-        });}
+        });
+    }
 
-    private void addKeyHandler_RELEASED(Scene scene, Character p, Character s)
-    {
+    private void addKeyHandler_RELEASED(Scene scene, Character p, Character s) {
         scene.addEventHandler(KeyEvent.KEY_RELEASED, ke -> {
             {
                 switch (ke.getCode()) {
-                    case UP    ->  s.setGoNorth(false);
-                    case DOWN  ->  s.setGoSouth(false);
-                    case LEFT  ->  s.setGoWest(false);
-                    case RIGHT ->  s.setGoEast(false);
+                    case UP -> s.setGoNorth(false);
+                    case DOWN -> s.setGoSouth(false);
+                    case LEFT -> s.setGoWest(false);
+                    case RIGHT -> s.setGoEast(false);
 
-                    case W ->  p.setGoNorth(false);
-                    case S ->  p.setGoSouth(false);
-                    case A ->  p.setGoWest(false);
-                    case D ->  p.setGoEast(false);
+                    case W -> p.setGoNorth(false);
+                    case S -> p.setGoSouth(false);
+                    case A -> p.setGoWest(false);
+                    case D -> p.setGoEast(false);
                 }
             }
-        });}
+        });
+    }
 
     private void handleEscape() throws CustomCheckedException.MissingMenuComponentException {
         var game_menu = new GameMenu(this);
@@ -232,20 +228,46 @@ public class Simulation extends Application {
     public double get_height() {
         return _height;
     }
+
     public double get_width() {
         return _width;
     }
-    public Pane getRoot() { return root; }
-    public Character getPlayer_1() { return Player_1; }
-    public Character getPlayer_2() { return Player_2; }
-    public GameMapModel get_gameMap(){return _gameMap;}
-    public String getIPlayerName(int index) { return _playersNames.get(index); }
-    public String getIUrlsSprite(int index) { return _playersUrlsSprite.get(index); }
-    public String getMapUrl() { return _mapUrl.get(0); }
 
-    public void startSimulation(){ _timer.start(); }
-    public void stopSimulation(){ _timer.stop(); }
+    public Pane getRoot() {
+        return root;
+    }
 
+    public Character getPlayer_1() {
+        return Player_1;
+    }
+
+    public Character getPlayer_2() {
+        return Player_2;
+    }
+
+    public GameMapModel get_gameMap() {
+        return _gameMap;
+    }
+
+    public String getIPlayerName(int index) {
+        return _playersNames.get(index);
+    }
+
+    public String getIUrlsSprite(int index) {
+        return _playersUrlsSprite.get(index);
+    }
+
+    public String getMapUrl() {
+        return _mapUrl.get(0);
+    }
+
+    public void startSimulation() {
+        _timer.start();
+    }
+
+    public void stopSimulation() {
+        _timer.stop();
+    }
 
 
 }

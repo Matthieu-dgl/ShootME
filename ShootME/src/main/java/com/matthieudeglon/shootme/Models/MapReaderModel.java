@@ -1,6 +1,7 @@
 package com.matthieudeglon.shootme.Models;
 
 import com.matthieudeglon.shootme.Constants.Constants;
+import com.matthieudeglon.shootme.Customs.CustomSettings;
 import com.matthieudeglon.shootme.Customs.CustomUncheckedException;
 import javafx.scene.image.Image;
 import javafx.util.Pair;
@@ -22,29 +23,28 @@ public class MapReaderModel {
 
 
         List<String[]> lines = readLinesFromFile(URL);
-        String tileSetURL = lines.get(Constants.URL_TILESET_INDEX)[0];
+
+        String tileSetURL = lines.get(CustomSettings.URL_TILESET_INDEX)[0];
         Image tileSet = getTilesetFromURL(tileSetURL);
 
-        List<Integer> mapInfo = parseStringArrayToIntArray(lines.get(Constants.MAP_INFO_INDEX));
+        List<Integer> mapInfo = parseStringArrayToIntArray(lines.get(CustomSettings.MAP_INFO_INDEX));
         int columns = mapInfo.get(0);
         int rows = mapInfo.get(1);
         int cellSide = mapInfo.get(2);
 
-        if (lines.size() != rows + Constants.NUMBER_OF_METADATA_LINES) {
+        if (lines.size() != rows + CustomSettings.NUMBER_OF_METADATA_LINES) {
             throw new CustomUncheckedException.MapFileFormatException(" Format of map is not compliant to the standard Map format ");
         }
 
-        Set<Integer> passableCodes = fromIntListToSet(parseStringArrayToIntArray(lines.get(Constants.PASSABLE_TILES_INDEX)));
-        Set<Integer> unpassableCodes = fromIntListToSet(parseStringArrayToIntArray(lines.get(Constants.NOT_PASSABLE_TILES_FOR_P_INDEX)));
+        Set<Integer> passableCodes = fromIntListToSet(parseStringArrayToIntArray(lines.get(CustomSettings.PASSABLE_TILES_INDEX)));
+        Set<Integer> unpassableCodes = fromIntListToSet(parseStringArrayToIntArray(lines.get(CustomSettings.NOT_PASSABLE_TILES_FOR_P_INDEX)));
 
-        /*   4. P1_start_X, P1_start_Y,P2_start_X, P2_start_X
-             5. T1_start_X;T1_start_Y; T2_start_X, T2_start_Y */
+
         Map<String, CoordinatesModel> coordinateDictionary = new HashMap<>();
-        fillDictionaryPosition(coordinateDictionary, Constants.PLAYER_CODE, parseStringArrayToIntArray(lines.get(Constants.SPRITE_COORD_INDEX)));
-        fillDictionaryPosition(coordinateDictionary, Constants.TELEPORT_CODE, parseStringArrayToIntArray(lines.get(Constants.TELEPORT_COORD_INDEX)));
+        fillDictionaryPosition(coordinateDictionary, CustomSettings.PLAYER_CODE, parseStringArrayToIntArray(lines.get(CustomSettings.SPRITE_COORD_INDEX)));
+        fillDictionaryPosition(coordinateDictionary, CustomSettings.TELEPORT_CODE, parseStringArrayToIntArray(lines.get(CustomSettings.TELEPORT_COORD_INDEX)));
 
-        /* 6 ... Map codes */
-        List<String[]> mapTileComposition = retrieveMapWithoutMetadata(lines, Constants.NUMBER_OF_METADATA_LINES);
+        List<String[]> mapTileComposition = retrieveMapWithoutMetadata(lines, CustomSettings.NUMBER_OF_METADATA_LINES);
 
         return new GameMapModel(width, height,
                 tileSet, cellSide,
@@ -58,7 +58,7 @@ public class MapReaderModel {
         return new HashSet<>(S);
     }
 
-    protected List<Integer> parseStringArrayToIntArray(String[] S) {
+    public List<Integer> parseStringArrayToIntArray(String[] S) {
         List<Integer> A = new ArrayList<>();
         try {
             A = Arrays.stream(S).parallel().mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
@@ -68,13 +68,13 @@ public class MapReaderModel {
         return A;
     }
 
-    protected List<String[]> readLinesFromFile(String url) {
+    public List<String[]> readLinesFromFile(String url) {
         List<String[]> rows = new ArrayList<>();
         URL filePath = Optional.ofNullable(ClassLoader.getSystemResource(url)).orElseThrow(() ->
                 new CustomUncheckedException.FileUrlException(" The csv file of the map [ " + url + " ] doesn't exist "));
         try (Stream<String> lines =
                      Files.lines(Paths.get(filePath.toURI()))) {
-            rows = lines.parallel().map(l -> l.split(Constants.FILE_SEPARATOR)).collect(Collectors.toList());
+            rows = lines.parallel().map(l -> l.split(CustomSettings.FILE_SEPARATOR)).collect(Collectors.toList());
             if (rows.isEmpty()) {
                 throw new CustomUncheckedException.EmptyFileException("Map file is empty");
             }
@@ -89,7 +89,7 @@ public class MapReaderModel {
         return rows;
     }
 
-    protected Image getTilesetFromURL(String URL) {
+    public Image getTilesetFromURL(String URL) {
         try {
             return new Image(URL);
         } catch (IllegalArgumentException e) {
@@ -99,7 +99,7 @@ public class MapReaderModel {
     }
 
 
-    protected List<String[]> retrieveMapWithoutMetadata(List<String[]> lines, int numberOfRowsToSkip) {
+    public List<String[]> retrieveMapWithoutMetadata(List<String[]> lines, int numberOfRowsToSkip) {
         return lines.stream().skip(numberOfRowsToSkip).collect(Collectors.toList());
     }
 

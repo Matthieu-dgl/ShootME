@@ -9,7 +9,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.Map;
 
-class ChoiceboxView extends VBox {
+class ChoiceBox extends VBox {
 
 
     final private Map<String, String> _dict;
@@ -18,7 +18,7 @@ class ChoiceboxView extends VBox {
     final private SelectorItem _selector;
     final String _name;
 
-    public ChoiceboxView(String name, Map<String, String> mapImageToURL, int spritesheetRow, double scale) {
+    public ChoiceBox(String name, Map<String, String> mapImageToURL, int spritesheetRow, double scale) {
         _name = name;
         _spritesheetRow = spritesheetRow;
         _customScale = scale;
@@ -56,7 +56,7 @@ class ChoiceboxView extends VBox {
 
     }
 
-    public ChoiceboxView(String name, Map<String, String> mapImageToUrl, int nrows, double scale, int default_index) throws CustomCheckedException.IndexOutOfRangeException {
+    public ChoiceBox(String name, Map<String, String> mapImageToUrl, int nrows, double scale, int default_index) throws CustomCheckedException.IndexOutOfRangeException {
         this(name, mapImageToUrl, nrows, scale);
         _selector.setDefaultIndex(default_index);
     }
