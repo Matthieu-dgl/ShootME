@@ -26,9 +26,9 @@ public class CustomSettings {
     public static final String URL_PROJECTILE = "cannon_ball.png";
     public static final String URL_HEART = "bonus.png";
 
-    public static final String URL_ARTIST = "artist.png";
-    public static final String URL_WARRIOR = "warrior.png";
-    public static final String URL_ASTROLOGER = "astrologer.png";
+    public static final String URL_ARTIST = "soldier.png";
+    public static final String URL_WARRIOR = "knight.png";
+    public static final String URL_ASTROLOGER = "wizard.png";
 
     public static final String URL_MAP_ISLAND_PNG = "map_island.png";
     public static final String URL_MAP_DESERT_PNG = "map_desert.png";
@@ -50,9 +50,9 @@ public class CustomSettings {
     public static final String KNIGHT = "KNIGHT";
     public static final String WIZARD = "WIZARD";
 
-    public static final String DESERT = "Desert";
-    public static final String ISLAND = "Islands";
+    public static final String DESERT = "DUNE";
+    public static final String ISLAND = "PLAIN";
 
-    public static final String WINDOW_NAME = "Shooter";
+    public static final String WINDOW_NAME = "SHOOT ME";
 
 }

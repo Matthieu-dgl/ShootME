@@ -34,9 +34,11 @@ public class GameMenu extends Menu {
         this.addItem("NEW GAME");
         this.addItem("OPTIONS");
         this.addItem("EXIT");
-        getStage().setTitle("VIDEO GAME");
-        setTitle("S H O O T E R 2 D");
 
+        this.addItem("By Matthieu & Farah");
+        getStage().setTitle("SHOOT ME");
+        setTitle("S H O O T M E");
+ 
 
         if (isSimulationRunning()) {
             getItem("CONTINUE").setOnMouseReleased(event -> {
@@ -51,6 +53,16 @@ public class GameMenu extends Menu {
             SubmenuView submenuLaunchGame = new SubmenuView(this);
             tryToStart(submenuLaunchGame);
         });
+
+        getItem("By Matthieu & Farah").setOnMouseReleased(event -> {
+            try {
+
+                java.awt.Desktop.getDesktop().browse(java.net.URI.create("https://github.com/Matthieu-dgl/Shooter2D"));
+            } catch (java.io.IOException e) {
+                e.printStackTrace();
+            }
+        });
+
         getItem("EXIT").setOnMouseReleased(event -> getStage().close());
         getItem("OPTIONS").setOnMouseReleased(event -> {
             OptionsMenu optionsMenu = new OptionsMenu(this);
