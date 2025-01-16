@@ -12,7 +12,6 @@ public class HealthBar extends MapObject {
     private final Rectangle remainingLifeRectangle;
     private final DoubleProperty healthPercentage;
 
-    /* Constructors */
     public HealthBar(Character S) {
         super(S.getScaledWidth(), getHBarHeightProportionalToSpriteHeight(S.getScaledHeight()));
 
@@ -27,7 +26,6 @@ public class HealthBar extends MapObject {
         addNodes(lostLifeRectangle, remainingLifeRectangle);
     }
 
-    /* Damage/Life handling */
     protected final void applyDamage() {
         setRemainingLifeTo(getCurrentHealth() - getRelativeDamage());
         if (lessThantHalfLifeRemains()) this.remainingLifeRectangle.setFill(ConstantColors.HALF_LIFE);
@@ -62,8 +60,6 @@ public class HealthBar extends MapObject {
         healthPercentage.set(d);
     }
 
-
-    /* Graphical components */
     private Rectangle createCustomInnerRectangle() {
         final Rectangle remainingLifeRectangle;
         remainingLifeRectangle = new Rectangle(0, 0, get_width(), get_height());

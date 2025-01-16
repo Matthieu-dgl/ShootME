@@ -62,8 +62,6 @@ public class HitBox {
         return false;
     }
 
-
-    /* Getters */
     public double get_top_box() {
         return box[BOUNDS.TOP.ordinal()];
     }

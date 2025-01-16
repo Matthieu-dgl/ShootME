@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 
 public class Simulation extends Application {
 
-    /* Create a new Pane */
     private final Pane root = new Pane();
     private Stage _stage;
 
@@ -83,7 +82,6 @@ public class Simulation extends Application {
         _width = _stage.getWidth();
         _height = _stage.getHeight();
 
-        /* Compute the scaling factor that will be used to update some parameters at RUNTIME*/
         scaling_factors = new Pair<>(_width / CustomSettings.DEFAULT_X, _height / CustomSettings.DEFAULT_Y);
     }
 
@@ -91,8 +89,6 @@ public class Simulation extends Application {
         return _scene;
     }
 
-
-    /* ---------------------------------- FIRST THINGS EXECUTED ---------------------------------- */
     public void start(Stage stage) {
         _stage = stage;
         stage.centerOnScreen();
@@ -112,7 +108,6 @@ public class Simulation extends Application {
         _stage.show();
     }
 
-    /* Game Loop and Core Functions */
     private void GAME() {
         _timer = new AnimationTimer() {
             private long last_update = 0;
@@ -158,8 +153,6 @@ public class Simulation extends Application {
         win_screen.start(_stage);
     }
 
-
-    /* Handle Player Movements */
     private void addKeyHandler_PRESS(Scene scene, Character s, Character p) {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, ke -> {
             {
@@ -224,7 +217,6 @@ public class Simulation extends Application {
     }
 
 
-    /* Getters */
     public double get_height() {
         return _height;
     }
@@ -268,7 +260,6 @@ public class Simulation extends Application {
     public void stopSimulation() {
         _timer.stop();
     }
-
 
 }
 

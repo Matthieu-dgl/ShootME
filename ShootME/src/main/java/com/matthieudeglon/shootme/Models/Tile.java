@@ -8,7 +8,6 @@ public class Tile extends ImageView {
 
     private final CoordinatesModel tilePixelPosition;
 
-    /* to encode properties of each tile*/
     private final boolean passableForPlayer;
     private final boolean passableForProjectile;
 

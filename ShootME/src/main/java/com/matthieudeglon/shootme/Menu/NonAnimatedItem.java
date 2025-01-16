@@ -51,7 +51,6 @@ class NonAnimatedItem extends StackPane {
             newText.setFill(textColor);
             newText.setFont(Font.font("Times New Roman", FontWeight.SEMI_BOLD, 0.0333 * Menu.getMenuHeight()));
 
-            //Text is transformed into an image and resized
             params.setFill(Color.TRANSPARENT);
             var textImage = new ImageView(newText.snapshot(params, null));
             if (textImage.getBoundsInLocal().getWidth() > box.getWidth())

@@ -12,7 +12,6 @@ public abstract class DynamicObject extends PicturedObject {
     private double _deltaX, _deltaY;
 
 
-    /* Constructors */
     public DynamicObject(Pair<Double, Double> scalingFactors, String url) {
         super(scalingFactors, url);
     }
@@ -21,8 +20,6 @@ public abstract class DynamicObject extends PicturedObject {
         super(scalingFactors, url, n_rows, n_cols);
     }
 
-
-    /* Movement management */
     protected void setSpeed(double speed) {
         _speed = speed;
     }
@@ -40,7 +37,6 @@ public abstract class DynamicObject extends PicturedObject {
     }
 
 
-    /* Collision handling */
     public abstract boolean checkIfPassable(Tile t);
 
     protected final HitBox getDefaultMoveBox() {
@@ -52,7 +48,6 @@ public abstract class DynamicObject extends PicturedObject {
     }
 
 
-    /* Movement & action management */
     protected abstract void defaultMovement(GameMapModel M);
 
     protected final boolean illegalMove(GameMapModel M) {
@@ -66,8 +61,6 @@ public abstract class DynamicObject extends PicturedObject {
 
     }
 
-
-    /* Setters */
     public final void setDeltaX(double deltaX) {
         _deltaX = deltaX;
     }
@@ -80,8 +73,6 @@ public abstract class DynamicObject extends PicturedObject {
         _currentDirection.set(currentDirection);
     }
 
-
-    /* Getters */
     public final double getSpeed() {
         return _speed;
     }

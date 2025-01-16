@@ -44,7 +44,6 @@ public abstract class Menu extends Application {
     private static ImageView _background;
     private static String _colorMode;
 
-    /************************** CONSTRUCTORS *****************************/
 
     public Menu() {
         _widthScale = 1;
@@ -77,8 +76,6 @@ public abstract class Menu extends Application {
 
         _root.getChildren().add(_background);
     }
-
-    /************************** START METHOD ************************************/
 
     public void start(Stage stage) throws CustomCheckedException.MissingMenuComponentException {
         setStage(stage);
@@ -206,7 +203,6 @@ public abstract class Menu extends Application {
         return new Pair<>(width, height);
     }
 
-    /************************** CONTENT MANAGEMENT *****************************/
 
     public void addItem(String newMenuItem) throws CustomCheckedException.MissingMenuComponentException {
         generateMenuBoxIfNotExist();
@@ -348,11 +344,6 @@ public abstract class Menu extends Application {
         }
     }
 
-
-    /************************** SET/GET METHODS *****************************/
-
-    /** GETTERS **/
-
     public static double getScreenWidth(){
         Screen screen = Screen.getPrimary();
         Rectangle2D screenBounds = screen.getVisualBounds();
@@ -473,7 +464,6 @@ public abstract class Menu extends Application {
             itemListFromBox = getItemsBox().getItems();
         }catch(CustomCheckedException.MissingMenuComponentException ignored){}
 
-        //add items not contained in items box to the list
         ArrayList<MenuItem> fullItemList = itemListFromBox;
         _root.getChildren().stream()
                 .filter(e -> e instanceof MenuItem)
@@ -512,9 +502,6 @@ public abstract class Menu extends Application {
             return new ArrayList<>();
         }
     }
-
-
-    /** SETTERS **/
 
     public void setStage(Stage stage){
         _stage = stage;
@@ -556,8 +543,6 @@ public abstract class Menu extends Application {
         _simulationRunning = true;
     }
 
-    /** OTHER **/
-
     public void show(){
         Scene menu_scene = new Scene(_root);
         _stage.setScene(menu_scene);
@@ -578,9 +563,6 @@ public abstract class Menu extends Application {
             throw new CustomCheckedException.FileManagementException(url);
         }
     }
-
-
-    /************************** COLOR PALETTE OBJECT *****************************/
 
     protected static class ColorPalette {
         Color basic_primary_color;

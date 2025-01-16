@@ -9,7 +9,6 @@ public abstract class MapObject extends Pane {
     private double _width, _height;
     private Pair<Double, Double> _resolutionScalingFactors;
 
-    /* Constructors */
     MapObject(Pair<Double, Double> resolutionScalingFactors) {
         setResolutionScalingFactors(resolutionScalingFactors);
     }
@@ -18,7 +17,6 @@ public abstract class MapObject extends Pane {
         setDimensions(width, height);
     }
 
-    /* Movement & action management */
     protected final void positionTo(CoordinatesModel coordinates) {
         relocate(coordinates.getX(), coordinates.getY());
     }
@@ -35,7 +33,6 @@ public abstract class MapObject extends Pane {
         return new CoordinatesModel(getLayoutX(), getLayoutY());
     }
 
-    /* Utils */
     protected final void addNodes(Node... nodes) {
         getChildren().addAll(nodes);
     }
@@ -45,7 +42,6 @@ public abstract class MapObject extends Pane {
         set_height(height);
     }
 
-    /* Getters */
     public final double get_width() {
         return _width;
     }
@@ -58,7 +54,6 @@ public abstract class MapObject extends Pane {
         return _resolutionScalingFactors;
     }
 
-    /* Setters */
     public final void set_width(double width) {
         _width = width;
     }

@@ -26,7 +26,6 @@ public class Teleporter extends PicturedObject {
     }
 
 
-    /* Collisions & action management */
     @Override
     public HitBox getHitbox() {
         return new HitBox(getCurrentYPosition() + (getScaledHeight() * .25), getCurrentXPosition() + (getScaledWidth() * .25),
@@ -43,7 +42,6 @@ public class Teleporter extends PicturedObject {
     }
 
 
-    /* Animations */
     private void rotationAnimation() {
         var rotation = new RotateTransition(Duration.millis(Constants.TELEPORT_TIME_TO_ROTATE), this);
         rotation.setByAngle(360);

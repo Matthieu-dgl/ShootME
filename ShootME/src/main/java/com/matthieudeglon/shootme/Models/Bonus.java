@@ -14,7 +14,6 @@ public class Bonus extends PicturedObject {
     private final Timeline _waitingTime;
     private final GameMapModel _map;
 
-    /* Constructor */
     public Bonus(Pane simulationRoot, GameMapModel map, String url, int nRows, int nCols, int numberOfFrames, Pair<Double, Double> scalingFactor) {
         super(scalingFactor, url, nRows, nCols);
         _map = map;
@@ -31,7 +30,6 @@ public class Bonus extends PicturedObject {
 
     }
 
-    /* Movement & action management */
     private void pushInsideBorder() {
         positionTo(new CoordinatesModel(getInMapXPosition(), getInMapYPosition()));
     }
@@ -62,12 +60,10 @@ public class Bonus extends PicturedObject {
 
     }
 
-    /* Utils */
     private void emptyPaneFromImageView(Pane P) {
         P.getChildren().removeIf(i -> i instanceof ImageView);
     }
 
-    /* Animations */
     private void createAndStartAnimation(int frames, int n_cols) {
         ObjectAnimation anim = new ObjectAnimation((ImageView) getPicture(), Duration.seconds(1), frames, n_cols, 0, 0, get_width(), get_height());
         anim.setCycleCount(Animation.INDEFINITE);

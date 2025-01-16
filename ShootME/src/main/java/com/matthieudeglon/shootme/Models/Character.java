@@ -32,7 +32,6 @@ public class Character extends DynamicObject {
         setSpeed(CustomSettings.PLAYER_SPEED);
         applyCustomScaleToObject(CustomSettings.PLAYER_SCALE);
 
-        /* Add a triggered event to change the view accordingly to the direction of the sprite */
         ChangeListener<Object> updateImage = getListener();
         getCurrentDirectionProperty().addListener(updateImage);
         getCurrentDirectionProperty().setValue(D);
@@ -47,7 +46,6 @@ public class Character extends DynamicObject {
     }
 
 
-    /* Movement & action management */
     @Override
     public void defaultMovement(GameMapModel M) {
         move(M);
@@ -90,8 +88,6 @@ public class Character extends DynamicObject {
         }
     }
 
-    /* Utils */
-
     public boolean checkIfPassable(Tile t) {
         return t.isPassableForPlayer();
     }
@@ -126,13 +122,11 @@ public class Character extends DynamicObject {
         set_currentDirection(D);
     }
 
-    /* Animations */
     private final Timeline shootingCooldown = new Timeline(
             new KeyFrame(Duration.ZERO, event -> canShoot.setValue(false)),
             new KeyFrame(Duration.seconds(CustomSettings.SHOOTING_COOLDOWN), event -> canShoot.setValue(true))
     );
 
-    /* Setters */
     public final void setGoNorth(boolean _goNorth) {
         this._goNorth = _goNorth;
     }
@@ -149,7 +143,6 @@ public class Character extends DynamicObject {
         this._goWest = _goWest;
     }
 
-    /* Getters */
     public final String get_id() {
         return _id;
     }
