@@ -1,4 +1,4 @@
-module com.matthieudeglon.shooter2d {
+module com.matthieudeglon.shootme {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -8,7 +8,7 @@ module com.matthieudeglon.shooter2d {
     requires org.kordamp.bootstrapfx.core;
     requires java.desktop;
 
-    opens com.matthieudeglon.shooter2d to javafx.fxml;
-    exports com.matthieudeglon.shooter2d;
-    exports com.matthieudeglon.shooter2d.Views;
+    opens com.matthieudeglon.shootme to javafx.fxml;
+    exports com.matthieudeglon.shootme;
+    exports com.matthieudeglon.shootme.Views;
 }

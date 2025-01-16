@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.matthieudeglon</groupId>
-  <artifactId>Shooter2D</artifactId>
+  <artifactId>ShootME</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>Shooter2D</name>
+  <name>ShootME</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -86,7 +86,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>com.matthieudeglon.shooter2d/com.matthieudeglon.shooter2d.Main</mainClass>
+              <mainClass>com.matthieudeglon.shootME/com.matthieudeglon.shootme.Main</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
