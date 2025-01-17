@@ -3,6 +3,7 @@ package com.matthieudeglon.shootme.Models;
 import com.matthieudeglon.shootme.Customs.CustomCheckedException;
 import com.matthieudeglon.shootme.Customs.CustomSettings;
 import com.matthieudeglon.shootme.Direction;
+import com.matthieudeglon.shootme.Server.GameServer;
 import com.matthieudeglon.shootme.Views.GameMenu;
 import com.matthieudeglon.shootme.Views.WinnerWindow;
 import javafx.animation.AnimationTimer;
@@ -38,6 +39,9 @@ public class Simulation extends Application {
     private final List<String> _playersNames;
     private final List<String> _playersUrlsSprite;
     private final List<String> _mapUrl;
+
+    private GameServer gameServer;
+
 
     public Simulation(List<String> players_names, List<String> players_urls_sprite, List<String> map_url) {
         this._playersNames = players_names;
@@ -99,6 +103,9 @@ public class Simulation extends Application {
         createContent();
         _scene = new Scene(root);
 
+        gameServer = new GameServer(12345);
+        gameServer.start();
+
         GAME();
 
         addKeyHandler_PRESS(_scene, Player_1, Player_2);
@@ -155,26 +162,54 @@ public class Simulation extends Application {
 
     private void addKeyHandler_PRESS(Scene scene, Character s, Character p) {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, ke -> {
-            {
-                switch (ke.getCode()) {
-                    case UP -> p.setGoNorth(true);
-                    case DOWN -> p.setGoSouth(true);
-                    case LEFT -> p.setGoWest(true);
-                    case RIGHT -> p.setGoEast(true);
-                    case ENTER -> p.shoot(root);
+            switch (ke.getCode()) {
+                case UP -> {
+                    p.setGoNorth(true);
+                    gameServer.broadcast("Player 2 moved UP");
+                }
+                case DOWN -> {
+                    p.setGoSouth(true);
+                    gameServer.broadcast("Player 2 moved DOWN");
+                }
+                case LEFT -> {
+                    p.setGoWest(true);
+                    gameServer.broadcast("Player 2 moved LEFT");
+                }
+                case RIGHT -> {
+                    p.setGoEast(true);
+                    gameServer.broadcast("Player 2 moved RIGHT");
+                }
+                case ENTER -> {
+                    p.shoot(root);
+                    gameServer.broadcast("Player 2 shooted");
+                }
 
-                    case W -> s.setGoNorth(true);
-                    case S -> s.setGoSouth(true);
-                    case A -> s.setGoWest(true);
-                    case D -> s.setGoEast(true);
-                    case SPACE -> s.shoot(root);
+                case Z -> {
+                    s.setGoNorth(true);
+                    gameServer.broadcast("Player 1 moved UP");
+                }
+                case S -> {
+                    s.setGoSouth(true);
+                    gameServer.broadcast("Player 1 moved DOWN");
+                }
+                case Q -> {
+                    s.setGoWest(true);
+                    gameServer.broadcast("Player 1 moved LEFT");
+                }
+                case D -> {
+                    s.setGoEast(true);
+                    gameServer.broadcast("Player 1 moved RIGHT");
+                }
+                case SPACE -> {
+                    s.shoot(root);
+                    gameServer.broadcast("Player 1 shooted");
+                }
 
-                    case ESCAPE -> {
-                        try {
-                            handleEscape();
-                        } catch (CustomCheckedException.MissingMenuComponentException e) {
-                            throw new RuntimeException(e);
-                        }
+                case ESCAPE -> {
+                    try {
+                        handleEscape();
+                    } catch (CustomCheckedException.MissingMenuComponentException e) {
+                        throw new RuntimeException(e);
                     }
                 }
             }
@@ -190,9 +225,9 @@ public class Simulation extends Application {
                     case LEFT -> s.setGoWest(false);
                     case RIGHT -> s.setGoEast(false);
 
-                    case W -> p.setGoNorth(false);
+                    case Z -> p.setGoNorth(false);
                     case S -> p.setGoSouth(false);
-                    case A -> p.setGoWest(false);
+                    case Q -> p.setGoWest(false);
                     case D -> p.setGoEast(false);
                 }
             }

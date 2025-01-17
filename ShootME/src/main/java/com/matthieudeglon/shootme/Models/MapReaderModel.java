@@ -1,6 +1,5 @@
 package com.matthieudeglon.shootme.Models;
 
-import com.matthieudeglon.shootme.Constants.Constants;
 import com.matthieudeglon.shootme.Customs.CustomSettings;
 import com.matthieudeglon.shootme.Customs.CustomUncheckedException;
 import javafx.scene.image.Image;

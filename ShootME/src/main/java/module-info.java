@@ -7,6 +7,7 @@ module com.matthieudeglon.shootme {
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
     requires java.desktop;
+    requires java.sql;
 
     opens com.matthieudeglon.shootme to javafx.fxml;
     exports com.matthieudeglon.shootme;
