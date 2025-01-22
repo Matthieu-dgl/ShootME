@@ -4,11 +4,11 @@
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/org/testfx/openjfx-monocle/jdk-12.0.1+2/openjfx-monocle-jdk-12.0.1+2.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/12.0.1/javafx-base-12.0.1.jar!/" />
-      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/12.0.1/javafx-base-12.0.1-win.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/12.0.1/javafx-base-12.0.1-mac.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/12.0.1/javafx-controls-12.0.1.jar!/" />
-      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/12.0.1/javafx-controls-12.0.1-win.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/12.0.1/javafx-controls-12.0.1-mac.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/12.0.1/javafx-graphics-12.0.1.jar!/" />
-      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/12.0.1/javafx-graphics-12.0.1-win.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/12.0.1/javafx-graphics-12.0.1-mac.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

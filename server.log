@@ -938,3 +938,173 @@ Jan 19, 2025 6:04:03 PM com.matthieudeglon.shootme.Server.GameServer broadcast
 INFO: Broadcasting message: Player 2 shooted
 Jan 19, 2025 6:04:03 PM com.matthieudeglon.shootme.Server.GameServer broadcast
 INFO: Broadcasting message: Player 1 shooted
+Jan 22, 2025 5:41:54 PM com.matthieudeglon.shootme.Server.GameServer lambda$start$0
+INFO: Game server started on port 12345
+Jan 22, 2025 5:41:55 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved LEFT
+Jan 22, 2025 5:41:56 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:41:56 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:41:56 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:41:57 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:41:57 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:41:57 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved LEFT
+Jan 22, 2025 5:41:58 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:41:59 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:01 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved RIGHT
+Jan 22, 2025 5:42:01 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:02 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:02 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:02 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:02 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:02 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:03 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:03 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved RIGHT
+Jan 22, 2025 5:42:04 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved RIGHT
+Jan 22, 2025 5:42:04 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:42:05 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:42:05 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:42:06 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:06 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:06 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved RIGHT
+Jan 22, 2025 5:42:06 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved RIGHT
+Jan 22, 2025 5:42:07 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:42:07 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:42:08 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:08 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:42:10 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved UP
+Jan 22, 2025 5:42:11 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved UP
+Jan 22, 2025 5:42:11 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved UP
+Jan 22, 2025 5:42:11 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved UP
+Jan 22, 2025 5:42:11 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved UP
+Jan 22, 2025 5:42:11 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved UP
+Jan 22, 2025 5:42:13 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved UP
+Jan 22, 2025 5:42:13 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:16 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:16 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:16 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved RIGHT
+Jan 22, 2025 5:42:16 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:17 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved RIGHT
+Jan 22, 2025 5:42:18 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved RIGHT
+Jan 22, 2025 5:42:18 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 shooted
+Jan 22, 2025 5:42:18 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 shooted
+Jan 22, 2025 5:42:18 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 shooted
+Jan 22, 2025 5:42:19 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 shooted
+Jan 22, 2025 5:42:19 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 shooted
+Jan 22, 2025 5:42:19 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved DOWN
+Jan 22, 2025 5:42:21 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved UP
+Jan 22, 2025 5:42:21 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 1 moved UP
+Jan 22, 2025 5:42:28 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:42:29 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:42:30 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:42:30 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:31 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:42:31 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:31 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:42:32 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:32 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:42:32 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:33 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:33 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:33 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:42:40 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:40 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:42:41 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:41 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:42:42 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:42:42 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:42:43 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:42:43 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved UP
+Jan 22, 2025 5:42:44 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved DOWN
+Jan 22, 2025 5:42:44 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 moved LEFT
+Jan 22, 2025 5:42:45 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 shooted
+Jan 22, 2025 5:42:45 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 shooted
+Jan 22, 2025 5:42:45 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 shooted
+Jan 22, 2025 5:42:46 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 shooted
+Jan 22, 2025 5:42:46 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 shooted
+Jan 22, 2025 5:42:46 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 shooted
+Jan 22, 2025 5:42:46 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 shooted
+Jan 22, 2025 5:42:46 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 shooted
+Jan 22, 2025 5:42:47 PM com.matthieudeglon.shootme.Server.GameServer broadcast
+INFO: Broadcasting message: Player 2 shooted
